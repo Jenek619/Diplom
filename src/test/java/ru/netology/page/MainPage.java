@@ -9,6 +9,7 @@ public class MainPage {
     private SelenideElement payment = $(byText("Купить"));
     private SelenideElement credit = $(byText("Купить в кредит"));
 
+
     public PaymentPage paymentButton() {
         payment.click();
         return new PaymentPage();
@@ -18,4 +19,6 @@ public class MainPage {
         credit.click();
         return new CreditPage();
     }
+
+
 }

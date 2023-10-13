@@ -20,7 +20,7 @@ public class SQLHelper {
     }
 
     @SneakyThrows
-    public static DataHelper.paymentStatus getpaymentStatus() {
+    public static DataHelper.paymentStatus getPaymentStatus() {
         var codeSQL = "SELECT status FROM payment_entity";
         var conn = getConn();
         var code = runner.query(conn, codeSQL, new ScalarHandler<String>());
