@@ -10,11 +10,11 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CreditPage {
-    private SelenideElement cardNumber = $(byText("Номер карты"));
-    private SelenideElement month = $(byText("Месяц"));
-    private SelenideElement year = $(byText("Год"));
-    private SelenideElement owner = $(byText("Владелец"));
-    private SelenideElement cvc = $(byText("CVC/CVV"));
+    private SelenideElement cardNumber = $(byText("Номер карты")).parent().$(".input__control");;
+    private SelenideElement month = $(byText("Месяц")).parent().$(".input__control");
+    private SelenideElement year = $(byText("Год")).parent().$(".input__control");
+    private SelenideElement owner = $(byText("Владелец")).parent().$(".input__control");
+    private SelenideElement cvc = $(byText("CVC/CVV")).parent().$(".input__control");
     private SelenideElement continueButton = $(byText("Продолжить"));
     private SelenideElement approvedForm = $(".notification__content");
 
