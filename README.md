@@ -1,6 +1,8 @@
 # Дипломный проект.
 ## Документация:
 - [Тест-план](https://github.com/Jenek619/Diplom/blob/main/docs/Plan.md)
+- [Отчётные документы по итогам тестирования](https://github.com/Jenek619/Diplom/blob/main/docs/Report.md)
+- [Отчётные документы по итогам автоматизации](https://github.com/Jenek619/Diplom/blob/main/docs/Summary.md)
 ## Информация о проекте
 Приложение представляет из себя веб-сервис для путешествий.
 ![image](https://github.com/netology-code/qa-diploma/blob/master/pic/service.png?raw=true)
