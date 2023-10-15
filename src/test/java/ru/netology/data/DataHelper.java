@@ -79,7 +79,7 @@ public class DataHelper {
         return "";
     }
 
-    public static String getInvalidOwner() {
+    public static String getCyrillicOwner() {
         Faker faker = new Faker(new Locale("ru"));
         return faker.name().firstName() + " " + faker.name().lastName();
     }

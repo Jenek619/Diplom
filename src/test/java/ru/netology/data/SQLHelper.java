@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 public class SQLHelper {
     private static final QueryRunner runner = new QueryRunner();
-
     private SQLHelper() {
 
     }
@@ -25,7 +24,6 @@ public class SQLHelper {
         var conn = getConn();
         var code = runner.query(conn, codeSQL, new ScalarHandler<String>());
         return new DataHelper.paymentStatus(code);
-
     }
 
     @SneakyThrows
@@ -34,7 +32,6 @@ public class SQLHelper {
         var conn = getConn();
         var code = runner.query(conn, codeSQL, new ScalarHandler<String>());
         return new DataHelper.creditStatus(code);
-
     }
 
     @SneakyThrows
