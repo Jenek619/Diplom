@@ -5,16 +5,14 @@
 - Общее количество тест-кейсов: 38
 
 - Количество оформленных баг-репортов 10
-##
-Отчёт автотестов Allure 
+## Отчёт автотестов Allure 
 ![image](https://sun9-68.userapi.com/impg/gsRPo2jlWSdFYIjq9PxlcwxqMWulodIv4VRtHQ/ISUyXb5K4zc.jpg?size=1911x957&quality=95&sign=87b84b3aac9a0811c697a4fd5aa8b40c&type=album)
 - Общее количество тест-кейсов:38
 - Успешных тест-кейсов:28
 - Процент успешных тест-кейсов:73.68%
 - Упавших тест-кейсов:10
 - Процент упавших тест-кейсов:26.32%
-##
-Отчёт автотестов Gradle
+## Отчёт автотестов Gradle
 ![image](https://sun9-10.userapi.com/impg/2bm6Evvs5rQ9lfS1Rzyg-bHJ1npcTb0UbIo46Q/e_YTDu0Jv4k.jpg?size=777x687&quality=95&sign=301892acba8339774c8e2f728c86dabb&type=album)
 - Общее количество тест-кейсов:38
 - Успешных тест-кейсов:28
