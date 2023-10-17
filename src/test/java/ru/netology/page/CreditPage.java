@@ -6,6 +6,7 @@ import ru.netology.data.CardInfo;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.ownText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -44,27 +45,35 @@ public class CreditPage {
         errorForm.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void cardNumberError() {
-        cardError.shouldBe(Condition.visible);
+    public void cardNumberWrongFormat() {
+        cardError.shouldBe(visible).shouldHave(ownText("Неверный формат"));
     }
 
-    public void monthError() {
-        monthError.shouldBe(Condition.visible);
+    public void monthWrongFormat() {
+        monthError.shouldBe(visible).shouldHave(ownText("Неверный формат"));
     }
 
-    public void expiredCardError() {
-        errorForm.shouldBe(Condition.visible);
+    public void monthInvalidCardDate() {
+        monthError.shouldBe(visible).shouldHave(ownText("Неверно указан срок действия карты"));
     }
 
-    public void yearError() {
-        yearError.shouldBe(Condition.visible);
+    public void yearWrongFormat() {
+        yearError.shouldBe(visible).shouldHave(ownText("Неверный формат"));
     }
 
-    public void ownerError() {
-        ownerError.shouldBe(Condition.visible);
+    public void yearInvalidCardDate() {
+        yearError.shouldBe(visible).shouldHave(ownText("Истёк срок действия карты"));
     }
 
-    public void cvcError() {
-        cvcError.shouldBe(Condition.visible);
+    public void ownerEmptyForm() {
+        ownerError.shouldBe(visible).shouldHave(ownText("Поле обязательно для заполнения"));
+    }
+
+    public void ownerWrongFormat() {
+        ownerError.shouldBe(visible).shouldHave(ownText("Неверный формат"));
+    }
+
+    public void cvcWrongFormat() {
+        cvcError.shouldBe(visible).shouldHave(ownText("Неверный формат"));
     }
 }

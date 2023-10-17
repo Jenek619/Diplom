@@ -47,7 +47,7 @@ public class CreditTest {
     void shouldIncompleteNumberCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getIncompleteNumberCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).cardNumberError();
+        mainPage.creditButton().creditForm(card).cardNumberWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -55,7 +55,7 @@ public class CreditTest {
     void shouldEmptyNumberCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getEmptyNumberCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).cardNumberError();
+        mainPage.creditButton().creditForm(card).cardNumberWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -63,7 +63,7 @@ public class CreditTest {
     void shouldBuyPaymentZeroNumberCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getZeroNumberCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).cardNumberWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -71,7 +71,7 @@ public class CreditTest {
     void shouldEmptyMonth() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getEmptyMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).monthError();
+        mainPage.creditButton().creditForm(card).monthWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -79,7 +79,7 @@ public class CreditTest {
     void shouldBuyCreditZeroMonth() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getZeroMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).monthError();
+        mainPage.creditButton().creditForm(card).monthInvalidCardDate();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -87,7 +87,7 @@ public class CreditTest {
     void shouldBuyCreditMore12Month() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getMore12Month(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).monthError();
+        mainPage.creditButton().creditForm(card).monthInvalidCardDate();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -95,7 +95,7 @@ public class CreditTest {
     void shouldEmptyYear() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getEmptyYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).yearError();
+        mainPage.creditButton().creditForm(card).yearWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -103,7 +103,7 @@ public class CreditTest {
     void shouldBuyCreditZeroYear() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getZeroYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).yearError();
+        mainPage.creditButton().creditForm(card).yearInvalidCardDate();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -111,7 +111,7 @@ public class CreditTest {
     void shouldBuyCreditPreviousYear() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getPreviousYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).yearError();
+        mainPage.creditButton().creditForm(card).yearInvalidCardDate();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -119,7 +119,7 @@ public class CreditTest {
     void shouldBuyCreditMore5Year() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getMore5Years(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).yearWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -128,7 +128,7 @@ public class CreditTest {
     void shouldEmptyOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getEmptyOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).ownerError();
+        mainPage.creditButton().creditForm(card).ownerEmptyForm();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -136,7 +136,7 @@ public class CreditTest {
     void shouldBuyCreditCyrillicOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCyrillicOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).ownerWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -144,7 +144,7 @@ public class CreditTest {
     void shouldBuyCreditSymbolOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getSymbolOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).ownerWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -152,7 +152,7 @@ public class CreditTest {
     void shouldBuyCreditNumeralOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getNumeralOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).ownerWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -160,7 +160,7 @@ public class CreditTest {
     void shouldEmptyCVC() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getEmptyCVC());
-        mainPage.creditButton().creditForm(card).cvcError();
+        mainPage.creditButton().creditForm(card).cvcWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -168,7 +168,7 @@ public class CreditTest {
     void shouldTwoNumeralsCVC() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getTwoNumeralsCVC());
-        mainPage.creditButton().creditForm(card).cvcError();
+        mainPage.creditButton().creditForm(card).cvcWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 
@@ -176,7 +176,7 @@ public class CreditTest {
     void shouldZeroNumberCVC() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getZeroNumberCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).cvcWrongFormat();
         Assertions.assertNull(SQLHelper.getCreditStatus().getCode());
     }
 

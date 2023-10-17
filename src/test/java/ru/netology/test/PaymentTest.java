@@ -49,7 +49,7 @@ public class PaymentTest {
     void shouldIncompleteNumberCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getIncompleteNumberCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).cardNumberError();
+        mainPage.paymentButton().paymentForm(card).cardNumberWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -57,7 +57,7 @@ public class PaymentTest {
     void shouldEmptyNumberCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getEmptyNumberCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).cardNumberError();
+        mainPage.paymentButton().paymentForm(card).cardNumberWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -65,7 +65,7 @@ public class PaymentTest {
     void shouldBuyPaymentZeroNumberCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getZeroNumberCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).cardNumberWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -73,7 +73,7 @@ public class PaymentTest {
     void shouldEmptyMonth() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getEmptyMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).monthError();
+        mainPage.paymentButton().paymentForm(card).monthWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -81,7 +81,7 @@ public class PaymentTest {
     void shouldBuyPaymentZeroMonth() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getZeroMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).monthError();
+        mainPage.paymentButton().paymentForm(card).monthInvalidCardDate();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -89,7 +89,7 @@ public class PaymentTest {
     void shouldBuyPaymentMore12Month() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getMore12Month(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).monthError();
+        mainPage.paymentButton().paymentForm(card).monthInvalidCardDate();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -97,7 +97,7 @@ public class PaymentTest {
     void shouldEmptyYear() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getEmptyYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).yearError();
+        mainPage.paymentButton().paymentForm(card).yearWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -105,7 +105,7 @@ public class PaymentTest {
     void shouldBuyPaymentZeroYear() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getZeroYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).yearError();
+        mainPage.paymentButton().paymentForm(card).yearInvalidCardDate();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -113,7 +113,7 @@ public class PaymentTest {
     void shouldBuyPaymentPreviousYear() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getPreviousYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).yearError();
+        mainPage.paymentButton().paymentForm(card).yearInvalidCardDate();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -121,7 +121,7 @@ public class PaymentTest {
     void shouldBuyPaymentMore5Year() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getMore5Years(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).yearWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -130,7 +130,7 @@ public class PaymentTest {
     void shouldEmptyOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getEmptyOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).ownerError();
+        mainPage.paymentButton().paymentForm(card).ownerEmptyForm();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -138,7 +138,7 @@ public class PaymentTest {
     void shouldBuyCyrillicOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCyrillicOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).ownerWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -146,7 +146,7 @@ public class PaymentTest {
     void shouldBuySymbolOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getSymbolOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).ownerWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -154,7 +154,7 @@ public class PaymentTest {
     void shouldBuyNumeralOwner() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getNumeralOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).ownerWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -162,7 +162,7 @@ public class PaymentTest {
     void shouldEmptyCVC() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getEmptyCVC());
-        mainPage.paymentButton().paymentForm(card).cvcError();
+        mainPage.paymentButton().paymentForm(card).cvcWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -170,7 +170,7 @@ public class PaymentTest {
     void shouldTwoNumeralsCVC() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getTwoNumeralsCVC());
-        mainPage.paymentButton().paymentForm(card).cvcError();
+        mainPage.paymentButton().paymentForm(card).cvcWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
@@ -178,7 +178,7 @@ public class PaymentTest {
     void shouldZeroNumberCVC() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getActiveCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getZeroNumberCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).cvcWrongFormat();
         Assertions.assertNull(SQLHelper.getPaymentStatus().getCode());
     }
 
