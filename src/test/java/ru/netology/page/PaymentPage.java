@@ -42,7 +42,7 @@ public class PaymentPage {
     }
 
     public void paymentDeclinedForm() {
-        errorForm.shouldHave(ownText("Операция одобрена Банком.")).shouldBe(visible, Duration.ofSeconds(15));
+        errorForm.shouldHave(ownText("Ошибка! Банк отказал в проведении операции.")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void cardNumberWrongFormat() {

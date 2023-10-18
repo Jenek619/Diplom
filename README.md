@@ -34,7 +34,8 @@ API Банка.
 - В терминале IntelliJ IDEA запустить необходимые базы данных с помощью команды `docker-compose up --build`
 - В новой вкладке терминала ввести следующую команду:  
   `java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar` для MySQL
-  `java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar` для PostgresQL
+  
+- `java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar` для PostgresQL
 - Проверить доступность приложения в браузере по адресу - `http://localhost:8080/`
 
 ### Для запуска автотестов:

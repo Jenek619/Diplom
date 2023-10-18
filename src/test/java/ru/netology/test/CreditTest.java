@@ -16,15 +16,15 @@ public class CreditTest {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    @AfterAll
-    static void tearDownAll() {
-        SelenideLogger.removeListener("allure");
-    }
-
     @BeforeEach
     void setUp() {
         open("http://localhost:8080");
         SQLHelper.clearBD();
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     @Test
