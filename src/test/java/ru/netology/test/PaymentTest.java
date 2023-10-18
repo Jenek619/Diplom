@@ -18,15 +18,15 @@ public class PaymentTest {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    @AfterAll
-    static void tearDownAll() {
-        SelenideLogger.removeListener("allure");
-    }
-
     @BeforeEach
     void setUp() {
         open("http://localhost:8080");
         SQLHelper.clearBD();
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     @Test
@@ -41,7 +41,7 @@ public class PaymentTest {
     void shouldBuyPaymentDeclinedCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getDeclinedCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.paymentButton().paymentForm(card).errorForm();
+        mainPage.paymentButton().paymentForm(card).paymentDeclinedForm();
         Assertions.assertEquals("DECLINED", SQLHelper.getPaymentStatus().getCode());
     }
 

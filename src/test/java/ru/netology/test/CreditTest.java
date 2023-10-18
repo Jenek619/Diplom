@@ -39,7 +39,7 @@ public class CreditTest {
     void shouldBuyCreditDeclinedCard() {
         var mainPage = new MainPage();
         CardInfo card = new CardInfo(getDeclinedCard(), getCurrentMonth(), getCurrentYear(), getCurrentOwner(), getCurrentCVC());
-        mainPage.creditButton().creditForm(card).errorForm();
+        mainPage.creditButton().creditForm(card).creditDeclinedForm();
         Assertions.assertEquals("DECLINED", SQLHelper.getCreditStatus().getCode());
     }
 
